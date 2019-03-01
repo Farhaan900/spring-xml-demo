@@ -4,7 +4,9 @@ import com.stackroute.domain.Actors;
 import com.stackroute.domain.Movies;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.*;
+import org.springframework.beans.factory.xml.BeanDefinitionDocumentReader;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
@@ -50,28 +52,69 @@ public class MainClass {
         System.out.println("Third part starts here");
 
 
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(Movies.class);
-        BeanDefinitionRegistry beanDefinitionRegistry = (BeanDefinitionRegistry) applicationContext.getBeanFactory();
+        /**
+         * Currently unused but useful code 
+         */
 
-        GenericBeanDefinition definition=new GenericBeanDefinition();
-        definition.setBeanClass(Movies.class);
-        definition.setAutowireCandidate(true);
+
+
+//        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(Movies.class);
+//        BeanDefinitionRegistry beanDefinitionRegistry = (BeanDefinitionRegistry) applicationContext.getBeanFactory();
+//
+//        GenericBeanDefinition definition=new GenericBeanDefinition();
+//        definition.setBeanClass(Movies.class);
+//        definition.setAutowireCandidate(true);
 //        MutablePropertyValues mutablePropertyValues=new MutablePropertyValues();
-        beanDefinitionRegistry.registerBeanDefinition("movies2",definition);
-        Movies movie1=(Movies)context.getBean("movies2");
-        System.out.println(movie1.getActor());
+//        beanDefinitionRegistry.registerBeanDefinition("movies3",definition);
+//
+//        mutablePropertyValues.add("actor",new Actors("Shaikh","male",23));
+//
+//
+//
+//
+////        Movies movie1=(Movies)context.getBean("movies2");
+////        System.out.println(movie1.getActor());
+//
+//        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+//
+//        BeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
+//        reader.loadBeanDefinitions(new FileSystemResource("src/main/resources/beans.xml"));
+//        Movies movie3=(Movies)factory.getBean("movies1");
+//        System.out.println(movie3.getActor());
 
 
+        DefaultListableBeanFactory context1 = new DefaultListableBeanFactory();
 
-        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        GenericBeanDefinition gbd = new GenericBeanDefinition();
+        gbd.setBeanClass(Movies.class);
+        MutablePropertyValues mpv = new MutablePropertyValues();
+
+        Actors act = new Actors(){
+            {
+                setName("Shaikh");
+                setGender("male");
+                setAge(22);
+            }
+        };
+        mpv.add("actor",act);
+        gbd.setPropertyValues(mpv);
+        context1.registerBeanDefinition("movies4", gbd);
+        System.out.println(context1.getBean("movies4",Movies.class).getActor());
 
 
-        BeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
-        reader.loadBeanDefinitions(new FileSystemResource("src/main/resources/beans.xml"));
-        Movies movie3=(Movies)factory.getBean("movies1");
-        System.out.println(movie3.getActor());
+        act = new Actors(){
+            {
+                setName("Shaikh2");
+                setGender("male");
+                setAge(25);
+            }
+        };
+        mpv.add("actor",act);
+        gbd.setPropertyValues(mpv);
+        context1.registerBeanDefinition("movies5", gbd);
 
 
+        System.out.println(context1.getBean("movies5",Movies.class).getActor());
 
     }
 }

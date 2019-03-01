@@ -1,0 +1,37 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+    <context:component-scan base-package="org.springframework.chapter1.service"/>
+
+
+
+    <bean id="actor1" class="com.stackroute.domain.Actors">
+        <property name="name" value="Khan"></property>
+        <property name="gender" value="male"></property>
+        <property name="age" value="20"></property>
+    </bean>
+
+    <bean id="actor2" class="com.stackroute.domain.Actors">
+        <property name="name" value="Khan2"></property>
+        <property name="gender" value="female"></property>
+        <property name="age" value="30"></property>
+    </bean>
+
+    <bean id="movies1" class="com.stackroute.domain.Movies">
+        <property name="actor" ref = "actor1"></property>
+    </bean>
+
+    <bean id="movies2" class="com.stackroute.domain.Movies">
+        <property name="actor" ref = "actor2"></property>
+    </bean>
+
+
+
+
+
+</beans>

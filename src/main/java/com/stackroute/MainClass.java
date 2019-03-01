@@ -24,36 +24,46 @@ public class MainClass {
          * using XmlBeanFactory
          */
 
-        Resource res = new FileSystemResource("src/main/resources/beans.xml");
-        XmlBeanFactory factory = new XmlBeanFactory(res);
-        Movies moviesFactory = factory.getBean("movies1" , Movies.class);
-        System.out.println(moviesFactory.getActor().toString());
-
-        System.out.println("Second part starts here");
+//        Resource res = new FileSystemResource("src/main/resources/beans.xml");
+//        XmlBeanFactory factory = new XmlBeanFactory(res);
+//        Movies moviesFactory = factory.getBean("movies1" , Movies.class);
+//        System.out.println(moviesFactory.getActor().toString());
+//
+//        System.out.println("Second part starts here");
 
         /**
          * using Application context
          */
 
         ApplicationContext context = new ClassPathXmlApplicationContext(
-                "beans.xml");
+                "beans2.xml");
         Movies movies1 = context.getBean(
                 "movies1", Movies.class);
         Movies movies2 = context.getBean(
                 "movies2", Movies.class);
+//        Movies movies3 = context.getBean(
+//                "movies3", Movies.class);
+
         System.out.println(movies1.getActor().toString());
         System.out.println(movies2.getActor().toString());
+//        System.out.println(movies3.getActor().toString());
 
+        Movies moviesA = context.getBean(
+                "movies1", Movies.class);
+        Movies moviesB = context.getBean(
+                "movies2", Movies.class);
+
+        System.out.println(moviesA==moviesB);
 
         /**
          * BeanDefinitionRegistry and BeanDefinitionReader
          */
 
-        System.out.println("Third part starts here");
+//        System.out.println("Third part starts here");
 
 
         /**
-         * Currently unused but useful code 
+         * Currently unused but useful code
          */
 
 
@@ -83,38 +93,42 @@ public class MainClass {
 //        System.out.println(movie3.getActor());
 
 
+
+        /**
         DefaultListableBeanFactory context1 = new DefaultListableBeanFactory();
 
         GenericBeanDefinition gbd = new GenericBeanDefinition();
         gbd.setBeanClass(Movies.class);
         MutablePropertyValues mpv = new MutablePropertyValues();
 
-        Actors act = new Actors(){
-            {
-                setName("Shaikh");
-                setGender("male");
-                setAge(22);
-            }
-        };
+        Actors act = new Actors("Shaikh","male",22);
+//        {
+//            {
+//                setName("Shaikh");
+//                setGender("male");
+//                setAge(22);
+//            }
+//        };
         mpv.add("actor",act);
         gbd.setPropertyValues(mpv);
         context1.registerBeanDefinition("movies4", gbd);
         System.out.println(context1.getBean("movies4",Movies.class).getActor());
 
+        act = new Actors("Shaikh2","male",25);
 
-        act = new Actors(){
-            {
-                setName("Shaikh2");
-                setGender("male");
-                setAge(25);
-            }
-        };
+//        act = new Actors(){
+//            {
+//                setName("Shaikh2");
+//                setGender("male");
+//                setAge(25);
+//            }
+//        };
         mpv.add("actor",act);
         gbd.setPropertyValues(mpv);
         context1.registerBeanDefinition("movies5", gbd);
 
 
         System.out.println(context1.getBean("movies5",Movies.class).getActor());
-
+**/
     }
 }

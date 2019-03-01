@@ -8,9 +8,13 @@ public class Movies {
         return actor;
     }
 
-    public void setActor(Actors actor) {
+    public Movies(Actors actor) {
         this.actor = actor;
     }
+
+//    public void setActor(Actors actor) {
+//        this.actor = actor;
+//    }
 
     public void printer(){
         System.out.println("Hello movie");

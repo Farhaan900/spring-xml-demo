@@ -10,28 +10,30 @@
 
 
 
-    <bean id="actor1" class="com.stackroute.domain.Actors">
-        <property name="name" value="Khan"></property>
-        <property name="gender" value="male"></property>
-        <property name="age" value="20"></property>
+    <!--<bean id="actor1" class="com.stackroute.domain.Actors">-->
+        <!--<property name="name" value="Khan"></property>-->
+        <!--<property name="gender" value="male"></property>-->
+        <!--<property name="age" value="20"></property>-->
+    <!--</bean>-->
+
+    <!--<bean id="actor2" class="com.stackroute.domain.Actors">-->
+        <!--<property name="name" value="Khan2"></property>-->
+        <!--<property name="gender" value="female"></property>-->
+        <!--<property name="age" value="30"></property>-->
+    <!--</bean>-->
+
+    <!--<bean id="movies1" class="com.stackroute.domain.Movies">-->
+        <!--<property name="actor" ref = "actor1"></property>-->
+    <!--</bean>-->
+
+    <!--<bean id="movies2" class="com.stackroute.domain.Movies">-->
+        <!--<property name="actor" ref = "actor2"></property>-->
+    <!--</bean>-->
+
+
+    <bean id="lifecycle" class="com.stackroute.demo.BeanLifecycleDemoBean">
+
     </bean>
-
-    <bean id="actor2" class="com.stackroute.domain.Actors">
-        <property name="name" value="Khan2"></property>
-        <property name="gender" value="female"></property>
-        <property name="age" value="30"></property>
-    </bean>
-
-    <bean id="movies1" class="com.stackroute.domain.Movies">
-        <property name="actor" ref = "actor1"></property>
-    </bean>
-
-    <bean id="movies2" class="com.stackroute.domain.Movies">
-        <property name="actor" ref = "actor2"></property>
-    </bean>
-
-
-
 
 
 </beans>

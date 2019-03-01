@@ -31,7 +31,7 @@ public class Movies implements ApplicationContextAware, BeanFactoryAware, BeanNa
                 '}';
     }
 
-    
+
     public void printer(){
         System.out.println("Hello movie");
     }

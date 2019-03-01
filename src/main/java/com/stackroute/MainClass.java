@@ -1,5 +1,6 @@
 package com.stackroute;
 
+import com.stackroute.demo.BeanLifecycleDemoBean;
 import com.stackroute.domain.Actors;
 import com.stackroute.domain.Movies;
 import org.springframework.beans.MutablePropertyValues;
@@ -38,22 +39,73 @@ public class MainClass {
 
         Movies movies;
 
+        BeanLifecycleDemoBean beanLifecycleDemoBean;
+
         ApplicationContext context = new ClassPathXmlApplicationContext(
-                "beans2.xml");
+                "beans.xml");
+
+        beanLifecycleDemoBean = context.getBean("lifecycle",BeanLifecycleDemoBean.class);
+
+        beanLifecycleDemoBean.customInit();
+        beanLifecycleDemoBean.customDestroy();
+
+        ((ClassPathXmlApplicationContext) context).close();
 
 
-        movies= context.getBean(
-                "movies1", Movies.class);
 
-        movies.setApplicationContext(context);
 
-        XmlBeanFactory factory = new XmlBeanFactory (new ClassPathResource("beans2.xml"));
 
-        movies.setBeanFactory(factory);
 
-        movies.setBeanName("MyMoviesBean");
 
-        movies.runEverything();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+//        ApplicationContext context = new ClassPathXmlApplicationContext(
+//                "beans2.xml");
+//
+//
+//        movies= context.getBean(
+//                "movies1", Movies.class);
+//
+//        movies.setApplicationContext(context);
+//
+//        XmlBeanFactory factory = new XmlBeanFactory (new ClassPathResource("beans2.xml"));
+//
+//        movies.setBeanFactory(factory);
+//
+//        movies.setBeanName("MyMoviesBean");
+//
+//        movies.runEverything();
 
 
 

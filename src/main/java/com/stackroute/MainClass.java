@@ -12,6 +12,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 
@@ -35,17 +36,48 @@ public class MainClass {
          * using Application context
          */
 
+        Movies movies;
+
         ApplicationContext context = new ClassPathXmlApplicationContext(
                 "beans2.xml");
-        Movies movies1 = context.getBean(
+
+
+        movies= context.getBean(
                 "movies1", Movies.class);
-        Movies movies2 = context.getBean(
-                "movies2", Movies.class);
+
+        movies.setApplicationContext(context);
+
+        XmlBeanFactory factory = new XmlBeanFactory (new ClassPathResource("beans2.xml"));
+
+        movies.setBeanFactory(factory);
+
+        movies.setBeanName("MyMoviesBean");
+
+        movies.runEverything();
+
+
+
+
+
+
+
+
+
+//        Movies movies1 = context.getBean(
+//                "movies1", Movies.class);
+//        Movies movies2 = context.getBean(
+//                "movies2", Movies.class);
 //        Movies movies3 = context.getBean(
 //                "movies3", Movies.class);
+//
+//        System.out.println(movies1.getActor().toString());
+//        System.out.println(movies2.getActor().toString());
 
-        System.out.println(movies1.getActor().toString());
-        System.out.println(movies2.getActor().toString());
+
+
+
+
+
 //        System.out.println(movies3.getActor().toString());
 
 //        Movies moviesA = context.getBean(

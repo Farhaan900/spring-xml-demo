@@ -48,12 +48,12 @@ public class MainClass {
         System.out.println(movies2.getActor().toString());
 //        System.out.println(movies3.getActor().toString());
 
-        Movies moviesA = context.getBean(
-                "movies1", Movies.class);
-        Movies moviesB = context.getBean(
-                "movies2", Movies.class);
+//        Movies moviesA = context.getBean(
+//                "movies1", Movies.class);
+//        Movies moviesB = context.getBean(
+//                "movies2", Movies.class);
 
-        System.out.println(moviesA==moviesB);
+//        System.out.println(moviesA==moviesB);
 
         /**
          * BeanDefinitionRegistry and BeanDefinitionReader

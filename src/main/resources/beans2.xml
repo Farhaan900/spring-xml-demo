@@ -33,7 +33,7 @@
 
 
 
-    <bean id="actor2" class="com.stackroute.domain.Actors">
+    <bean id="actor" class="com.stackroute.domain.Actors">
         <constructor-arg value="Eswar" />
         <constructor-arg value="male" />
         <constructor-arg value="25" />
@@ -63,10 +63,12 @@
         <!--<constructor-arg ref = "actor3"/>-->
     <!--</bean>-->
 
-    <bean name="movies1,movies2"  class="com.stackroute.domain.Movies" scope = "prototype">
-        <constructor-arg ref = "actor1"/>
-    </bean>
+    <!--<bean name="movies1,movies2"  class="com.stackroute.domain.Movies" scope = "prototype">-->
+        <!--<constructor-arg ref = "actor1"/>-->
+    <!--</bean>-->
 
+    <bean id="movies1" class="com.stackroute.domain.Movies" autowire="byName" />
+    <bean id="movies2" class="com.stackroute.domain.Movies" autowire="byName" />
 
 
 

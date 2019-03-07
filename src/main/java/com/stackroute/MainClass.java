@@ -55,34 +55,6 @@ public class MainClass {
         /**
          * Currently unused but useful code 
          */
-
-
-
-//        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(Movies.class);
-//        BeanDefinitionRegistry beanDefinitionRegistry = (BeanDefinitionRegistry) applicationContext.getBeanFactory();
-//
-//        GenericBeanDefinition definition=new GenericBeanDefinition();
-//        definition.setBeanClass(Movies.class);
-//        definition.setAutowireCandidate(true);
-//        MutablePropertyValues mutablePropertyValues=new MutablePropertyValues();
-//        beanDefinitionRegistry.registerBeanDefinition("movies3",definition);
-//
-//        mutablePropertyValues.add("actor",new Actors("Shaikh","male",23));
-//
-//
-//
-//
-////        Movies movie1=(Movies)context.getBean("movies2");
-////        System.out.println(movie1.getActor());
-//
-//        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-//
-//        BeanDefinitionReader reader = new XmlBeanDefinitionReader(beanFactory);
-//        reader.loadBeanDefinitions(new FileSystemResource("src/main/resources/beans.xml"));
-//        Movies movie3=(Movies)factory.getBean("movies1");
-//        System.out.println(movie3.getActor());
-
-
         DefaultListableBeanFactory context1 = new DefaultListableBeanFactory();
 
         GenericBeanDefinition gbd = new GenericBeanDefinition();
